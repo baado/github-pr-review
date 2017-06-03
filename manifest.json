@@ -1,0 +1,19 @@
+{
+   "manifest_version": 2,
+   "name": "GitHub Pull Request Reviewers",
+   "description": "This extention adds reviewer info to pr list.",
+   "options_page": "html/option.html",
+   "content_scripts": [
+      {
+         "matches": [ "https://github.com/*/pulls*" ],
+         "js": [ "js/base.js" ],
+         "css": [ "css/base.css" ]
+      }
+   ],
+   "background": {
+       "scripts": [ "js/background.js" ]
+   },
+   "permissions": [ "https://github.com/*", "https://api.github.com/*", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.0.1"
+}

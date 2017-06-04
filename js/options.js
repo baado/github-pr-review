@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var token;
     chrome.storage.local.get("github_review_token", function(item) {
         token = item.github_review_token;
-        if (!token) {
+        if (token) {
             document.querySelector('[name="token"]').value = token;
         }
     });

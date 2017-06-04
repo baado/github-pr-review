@@ -1,10 +1,6 @@
 
 var token;
 
-chrome.extension.sendMessage({type: "initialise"}, function(response) {
-	PrExpander.Initialise();
-});
-
 var PrExpander = {};
 (function(PrExpander) {
     const requestIcon = '<svg aria-hidden="true" class="octicon octicon-primitive-dot bg-pending" height="16" version="1.1" viewBox="0 0 8 16" width="8"><path fill-rule="evenodd" d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"></path></svg>';
@@ -12,6 +8,12 @@ var PrExpander = {};
     const apiRoot = "https://api.github.com";
 
     PrExpander.Initialise = function() {
+        if (document.getElementById('PrExpanderLoaded')) {
+            return;
+        }
+        const labelNode = document.createElement('span');
+        labelNode.id = 'PrExpanderLoaded';
+        document.getElementById('js-issues-toolbar').appendChild(labelNode);
         chrome.storage.local.get("github_review_token", function(item) {
             token = item.github_review_token;
             [].forEach.call(document.querySelectorAll('.js-navigation-container.js-active-navigation-container li'), function(entry) { 
@@ -84,3 +86,5 @@ var PrExpander = {};
             });
     }
 })(PrExpander);
+
+PrExpander.Initialise();

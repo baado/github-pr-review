@@ -1,12 +1,14 @@
 {
+   "background": {
+      "scripts": [ "js/background.js" ]
+   },
    "manifest_version": 2,
    "name": "GitHub Pull Request Reviewers",
    "description": "This extension adds reviewer info to pr list.",
    "options_page": "html/option.html",
    "content_scripts": [
       {
-         "matches": [ "https://github.com/*/pulls*" ],
-         "js": [ "js/base.js" ],
+         "matches": [ "https://github.com/*" ],
          "css": [ "css/base.css" ]
       }
    ],

@@ -1,12 +1,16 @@
-const tokenStorageName = "github_review_token";
-
 document.addEventListener('DOMContentLoaded', function () {
     const apiRoot = "https://api.github.com";
-    document.querySelector('[name="token"]').value = localStorage.getItem(tokenStorageName);
+    var token;
+    chrome.storage.local.get("github_review_token", function(item) {
+        token = item.github_review_token;
+        document.querySelector('[name="token"]').value = token;
+    });
 
     document.querySelector('[name="save"]').addEventListener('click', function (e) {
-        localStorage.setItem(tokenStorageName, document.querySelector('[name="token"]').value);
-        alert('saved');
+        const token = document.querySelector('[name="token"]').value;
+        chrome.storage.local.set({"github_review_token": token}, function() {
+            alert('saved');
+        });
     });
     document.querySelector('[name="test"]').addEventListener('click', function (e) {
     	const token = document.querySelector('[name="token"]').value;

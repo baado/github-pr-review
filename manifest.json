@@ -10,10 +10,7 @@
          "css": [ "css/base.css" ]
       }
    ],
-   "background": {
-       "scripts": [ "js/background.js" ]
-   },
-   "permissions": [ "https://github.com/*", "https://api.github.com/*", "tabs" ],
+   "permissions": [ "https://github.com/*", "https://api.github.com/*", "tabs", "storage" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "0.0.1"
 }

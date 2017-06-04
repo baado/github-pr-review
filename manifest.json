@@ -1,7 +1,7 @@
 {
    "manifest_version": 2,
    "name": "GitHub Pull Request Reviewers",
-   "description": "This extention adds reviewer info to pr list.",
+   "description": "This extension adds reviewer info to pr list.",
    "options_page": "html/option.html",
    "content_scripts": [
       {

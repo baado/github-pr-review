@@ -18,9 +18,11 @@ var PrExpander = {};
             token = item.github_review_token;
             [].forEach.call(document.querySelectorAll('.js-navigation-container.js-active-navigation-container li'), function(entry) { 
                 var url = entry.getElementsByClassName('js-navigation-open')[0].href;
-                const [_, owner, repo, issueNum] = /^https?:\/\/[^\/]+\/([^\/]+)\/([^\/]+)\/pull\/(\d+)\b/.exec(url);
-                fetchReviews(owner, repo, issueNum, entry);
-                fetchReviewRequests(owner, repo, issueNum, entry);
+                const [_, owner, repo, issueOrPr, issueNum] = /^https?:\/\/[^\/]+\/([^\/]+)\/([^\/]+)\/(issues|pull)\/(\d+)\b/.exec(url);
+                if (issueOrPr === 'pull') {
+                    fetchReviews(owner, repo, issueNum, entry);
+                    fetchReviewRequests(owner, repo, issueNum, entry);
+                }
             });
         });
     };

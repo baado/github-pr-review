@@ -81,7 +81,7 @@ var PrExpander = {};
                 addLabelContainerIfNeeded(arg.entry);
                 const node = arg.entry.getElementsByClassName('labels')[0];
 
-                arg.json.forEach(function(person){
+                arg.json.users.forEach(function(person){
                     var userHtml = `<span style="padding:.3em;">${requestIcon}<a href="${person.html_url}">${person.login}</a></span>`;
                     node.innerHTML = node.innerHTML + userHtml;
                 });
